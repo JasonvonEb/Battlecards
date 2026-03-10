@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backup Rival Radar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Seller Battlecard Workspace</p>
+          <h1>Help sellers position Backblaze faster in live deals.</h1>
+          <p class="hero-text">
+            Build side-by-side battlecards, sharpen competitor talk tracks, and keep the team aligned on where
+            Backblaze wins, where competitors differ, and how to frame tradeoffs clearly.
+          </p>
+        </div>
+        <div class="hero-stats" id="heroStats"></div>
+      </header>
+
+      <main class="content-grid">
+        <section class="panel guide-panel">
+          <div class="panel-header">
+            <div>
+              <h2>How To Use This Page</h2>
+              <p class="panel-text">A fast workflow for pre-call prep, discovery follow-up, and objection handling.</p>
+            </div>
+          </div>
+          <div class="guide-grid">
+            <article class="guide-card">
+              <p class="eyebrow">Step 1</p>
+              <h3>Select the competitors in your evaluation</h3>
+              <p>
+                Use the roster below to choose the vendors the prospect is evaluating. The battlecard automatically
+                compares them against Backblaze Computer Backup.
+              </p>
+            </article>
+            <article class="guide-card">
+              <p class="eyebrow">Step 2</p>
+              <h3>Review pricing, scope, and limits</h3>
+              <p>
+                Focus on what matters in a sales conversation: per-device vs pooled storage, restore paths, retention,
+                and where a competitor requires a higher tier to match core expectations.
+              </p>
+            </article>
+            <article class="guide-card">
+              <p class="eyebrow">Step 3</p>
+              <h3>Export the battlecard for the sales team</h3>
+              <p>
+                Export as text or PDF and drop it into the account brief, enablement doc, or Slack thread so the sales
+                team uses one clear positioning story.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel value-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Why Sellers Use It</h2>
+              <p class="panel-text">The page is designed to make competitive positioning faster and more concrete.</p>
+            </div>
+          </div>
+          <div class="value-list">
+            <div class="value-item">
+              <strong>Clarify tradeoffs</strong>
+              <p>Show when “unlimited” means one computer, one user, or a pooled account with storage caps elsewhere.</p>
+            </div>
+            <div class="value-item">
+              <strong>Reduce vague talk tracks</strong>
+              <p>Replace generic positioning with specific restore, retention, security, and plan-limit details.</p>
+            </div>
+            <div class="value-item">
+              <strong>Speed up prep</strong>
+              <p>Get to a usable comparison in a few clicks instead of rebuilding notes in every deal cycle.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel battlecard-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Battlecard</h2>
+              <p class="panel-text">Select competitors to compare directly against Backblaze Computer Backup.</p>
+            </div>
+            <div class="button-row">
+              <button id="exportBattlecardBtn" class="secondary-button" type="button">Export text</button>
+              <button id="exportBattlecardPdfBtn" class="primary-button" type="button">Export PDF</button>
+            </div>
+          </div>
+          <p id="battlecardStatus" class="status-text"></p>
+          <div id="battlecardGrid" class="battlecard-grid"></div>
+        </section>
+
+        <section class="panel table-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Competitor roster</h2>
+              <p class="panel-text">Choose who is in the deal, then review the side-by-side battlecard above.</p>
+            </div>
+            <p id="resultsLabel"></p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Compare</th>
+                  <th>Company</th>
+                  <th>Annual price</th>
+                  <th>Storage</th>
+                  <th>Segment</th>
+                  <th>Other features</th>
+                  <th>Reviewed</th>
+                </tr>
+              </thead>
+              <tbody id="comparisonBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel cards-panel">
+          <details id="cardsDisclosure" class="editor-disclosure">
+            <summary>
+              <span>
+                <strong>Competitor cards</strong>
+                <small>Expand to inspect details and mark battlecard selections.</small>
+              </span>
+            </summary>
+            <div class="editor-body">
+              <div id="competitorCards" class="cards"></div>
+            </div>
+          </details>
+        </section>
+
+        <section class="panel editor-panel">
+          <details id="profileEditorDisclosure" class="editor-disclosure">
+            <summary>
+              <span>
+                <strong>Add new or edit competitor profiles</strong>
+                <small>Expand to add a competitor, update profile data, or autofill a known company.</small>
+              </span>
+            </summary>
+
+            <div class="editor-body">
+              <div class="panel-header editor-header">
+                <div class="autofill-banner">
+                  <div>
+                    <strong>Name-based autofill</strong>
+                    <p>Known competitor profiles fill instantly from the built-in research set.</p>
+                  </div>
+                  <button id="autofillBtn" class="secondary-button" type="button">Fill company</button>
+                </div>
+                <button id="clearFormBtn" class="ghost-button" type="button">Clear</button>
+              </div>
+
+              <p id="autofillStatus" class="status-text"></p>
+
+              <form id="competitorForm">
+                <input id="competitorId" type="hidden" />
+                <div class="field-row">
+                  <label class="field">
+                    <span>Company</span>
+                    <input id="nameInput" type="text" required />
+                  </label>
+                  <label class="field">
+                    <span>Category</span>
+                    <input id="categoryInput" type="text" placeholder="Cloud backup" required />
+                  </label>
+                </div>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>Annual price (USD)</span>
+                    <input id="priceInput" type="number" min="0" step="0.01" required />
+                  </label>
+                  <label class="field">
+                    <span>Storage model</span>
+                    <input id="storageInput" type="text" placeholder="Unlimited or tiered" required />
+                  </label>
+                </div>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>Platforms</span>
+                    <input id="platformsInput" type="text" placeholder="Windows, macOS" required />
+                  </label>
+                  <label class="field">
+                    <span>Segment</span>
+                    <input id="segmentInput" type="text" placeholder="Consumer" required />
+                  </label>
+                </div>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>Positioning</span>
+                    <select id="positioningInput" required>
+                      <option value="Direct">Direct</option>
+                      <option value="Adjacent">Adjacent</option>
+                      <option value="Premium">Premium</option>
+                      <option value="Value">Value</option>
+                    </select>
+                  </label>
+                  <label class="field">
+                    <span>Last reviewed</span>
+                    <input id="reviewedInput" type="date" required />
+                  </label>
+                </div>
+
+                <label class="field">
+                  <span>Positioning notes</span>
+                  <textarea id="notesInput" rows="4" placeholder="Strengths, messaging, differentiators"></textarea>
+                </label>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>Pricing details</span>
+                    <textarea id="pricingDetailsInput" rows="3" placeholder="Per computer, billed monthly or yearly, no family plan"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Storage details</span>
+                    <textarea id="storageDetailsInput" rows="3" placeholder="Unlimited per computer, not shared across devices, no NAS"></textarea>
+                  </label>
+                </div>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>Retention details</span>
+                    <textarea id="retentionDetailsInput" rows="3" placeholder="30-day history included, 1-year free, forever paid"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Restore details</span>
+                    <textarea id="restoreDetailsInput" rows="3" placeholder="Web download, courier restore, mobile app access"></textarea>
+                  </label>
+                </div>
+
+                <label class="field">
+                  <span>Security details</span>
+                  <textarea id="securityDetailsInput" rows="3" placeholder="Private key option, encryption at rest and in transit, 2FA"></textarea>
+                </label>
+
+                <label class="field">
+                  <span>Cloud sync posture</span>
+                  <textarea
+                    id="cloudSyncInput"
+                    rows="3"
+                    placeholder="How this product works with or differs from Dropbox, Google Drive, and iCloud"
+                  ></textarea>
+                </label>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>Legal hold</span>
+                    <input id="legalHoldInput" type="text" placeholder="Not supported or supported in enterprise tier" />
+                  </label>
+                  <label class="field">
+                    <span>eDiscovery</span>
+                    <input id="eDiscoveryInput" type="text" placeholder="Not supported or supported via governance module" />
+                  </label>
+                </div>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>Default retention</span>
+                    <input id="defaultRetentionInput" type="text" placeholder="30 days, unlimited versions, policy-based, etc." />
+                  </label>
+                  <label class="field">
+                    <span>Retention add-on</span>
+                    <input id="retentionAddonInput" type="text" placeholder="1-year or forever add-on, included, none, quote-based" />
+                  </label>
+                </div>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>Linux support</span>
+                    <input id="linuxSupportInput" type="text" placeholder="Supported, not supported, endpoint only, server only" />
+                  </label>
+                  <label class="field">
+                    <span>Server support</span>
+                    <input id="serverSupportInput" type="text" placeholder="Not supported, business tier, image backup, etc." />
+                  </label>
+                </div>
+
+                <label class="field">
+                  <span>Bare metal recovery</span>
+                  <input id="bareMetalInput" type="text" placeholder="Not supported, image-based BMR, business-only, etc." />
+                </label>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>How we win</span>
+                    <textarea id="howWeWinInput" rows="4" placeholder="What Backblaze should emphasize against this competitor"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Limitations</span>
+                    <textarea id="limitationsInput" rows="4" placeholder="Where this competitor is weaker, more expensive, or more complex"></textarea>
+                  </label>
+                </div>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>How we lose</span>
+                    <textarea id="howWeLoseInput" rows="4" placeholder="Where this competitor is stronger and what sellers should watch for"></textarea>
+                  </label>
+                </div>
+
+                <label class="field">
+                  <span>Other features, one per line</span>
+                  <textarea
+                    id="featuresInput"
+                    rows="5"
+                    placeholder="Automatic backup&#10;Version history&#10;External drive backup"
+                  ></textarea>
+                </label>
+
+                <button class="primary-button" type="submit">Save competitor</button>
+              </form>
+            </div>
+          </details>
+        </section>
+      </main>
+    </div>
+
+    <template id="cardTemplate">
+      <article class="competitor-card">
+        <div class="card-topline">
+          <span class="position-badge"></span>
+          <span class="review-date"></span>
+        </div>
+        <h3 class="company-name"></h3>
+        <p class="category"></p>
+        <dl class="metric-list">
+          <div>
+            <dt>Price</dt>
+            <dd class="price"></dd>
+          </div>
+          <div>
+            <dt>Storage</dt>
+            <dd class="storage"></dd>
+          </div>
+          <div>
+            <dt>Platforms</dt>
+            <dd class="platforms"></dd>
+          </div>
+          <div>
+            <dt>Segment</dt>
+            <dd class="segment"></dd>
+          </div>
+        </dl>
+        <ul class="features"></ul>
+        <p class="notes"></p>
+        <p class="cloud-sync"></p>
+        <p class="how-we-win"></p>
+        <p class="limitations"></p>
+        <p class="how-we-lose"></p>
+        <div class="sources"></div>
+        <div class="card-actions">
+          <button class="secondary-button select-button" type="button">Toggle battlecard</button>
+          <button class="secondary-button edit-button" type="button">Edit in panel</button>
+          <button class="ghost-button delete-button" type="button">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
