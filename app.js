@@ -35,6 +35,11 @@ const backblazeProfile = {
   linuxSupport: "Not supported for Computer Backup",
   serverSupport: "Not supported in Computer Backup",
   bareMetalRecovery: "Not supported",
+  ransomwareImmutability: "Version-history retention helps recovery, but Computer Backup is not positioned around immutable backup or anti-ransomware controls",
+  adminControls: "Minimal admin controls in standard consumer flow; stronger controls available in Enterprise Control packaging",
+  saasBackupCoverage: "No native Microsoft 365 or Google Workspace backup in Computer Backup",
+  restoreExperience: "Strong self-service web restore plus shipped USB flash drive or hard drive restore",
+  syncIncluded: "No sync-and-share layer included",
   limitations:
     "Less breadth than security-suite or enterprise-governance competitors. Linux, server, and broad admin-control use cases fall outside the core product target.",
   howWeWin:
@@ -87,6 +92,11 @@ const researchedProfiles = [
       linuxSupport: "Not supported in Carbonite Safe personal backup",
       serverSupport: "Server backup is a separate business product",
       bareMetalRecovery: "Not publicly positioned in Carbonite Safe personal backup",
+      ransomwareImmutability: "Webroot bundle adds endpoint security in higher tiers, but immutable-backup language is not the core personal-backup story",
+      adminControls: "Limited in personal backup; heavier control exists in separate business offerings",
+      saasBackupCoverage: "No native collaboration-suite backup in personal offering",
+      restoreExperience: "Standard cloud restore, with courier restore reserved for Prime tier",
+      syncIncluded: "No sync-and-share layer included",
       limitations:
         "Important capabilities are split across Basic, Plus, and Prime. External-drive backup and courier recovery require moving up the lineup.",
       howWeWin:
@@ -140,6 +150,11 @@ const researchedProfiles = [
       linuxSupport: "Supported",
       serverSupport: "Supported, including server workloads",
       bareMetalRecovery: "Supported",
+      ransomwareImmutability: "Talks more about snapshots and recovery than immutable-copy positioning",
+      adminControls: "Broader device and workload management than consumer backup, but not as governance-heavy as enterprise platforms",
+      saasBackupCoverage: "No major Microsoft 365 or Google Workspace backup emphasis in Personal plan",
+      restoreExperience: "Strong restore options plus IDrive Express for large datasets",
+      syncIncluded: "Yes, includes sync and Cloud Drive features",
       limitations:
         "Not unlimited per computer, so the buyer has to think about pooled storage limits. The product is also denser and less turnkey for simple endpoint backup.",
       howWeWin:
@@ -193,6 +208,11 @@ const researchedProfiles = [
       linuxSupport: "Supported",
       serverSupport: "Endpoint-focused, not sold as a server backup platform here",
       bareMetalRecovery: "Not publicly positioned",
+      ransomwareImmutability: "Strong messaging around immutable recovery and ransomware resilience",
+      adminControls: "Strong admin controls, deployment, and policy governance",
+      saasBackupCoverage: "Yes, broader platform messaging includes SaaS application protection",
+      restoreExperience: "Strong self-service restore and business endpoint recovery workflows",
+      syncIncluded: "No sync-and-share layer included",
       limitations:
         "Business-oriented packaging makes it a weaker fit for straightforward consumer or prosumer computer backup. Admin depth can be overkill for lightweight use cases.",
       howWeWin:
@@ -246,6 +266,11 @@ const researchedProfiles = [
       linuxSupport: "Not supported in Home Office endpoint lineup",
       serverSupport: "Server backup is separate from Home Office product line",
       bareMetalRecovery: "Supported through image backup and recovery media",
+      ransomwareImmutability: "Strong anti-ransomware and cyber-protection positioning",
+      adminControls: "More product controls than simple consumer backup, though still less enterprise-admin heavy than Druva or CrashPlan",
+      saasBackupCoverage: "Yes, Microsoft 365 backup is positioned in the suite",
+      restoreExperience: "Strong image-based and file-level recovery options",
+      syncIncluded: "No true collaboration sync layer as a core product message",
       limitations:
         "Cloud capacity is tiered rather than unlimited, and the product can feel more complex because backup is bundled with broader security tooling.",
       howWeWin:
@@ -302,6 +327,11 @@ const researchedProfiles = [
       linuxSupport: "Not publicly positioned for endpoint product",
       serverSupport: "Separate workload protection story outside endpoint plans",
       bareMetalRecovery: "Not publicly positioned for endpoint plans",
+      ransomwareImmutability: "Strong anomaly detection and cyber-recovery positioning",
+      adminControls: "Strong enterprise controls, deployment, governance, and policy management",
+      saasBackupCoverage: "Yes, broader Druva platform protects SaaS apps like Google Workspace and Microsoft 365",
+      restoreExperience: "Enterprise-grade guided recovery workflows",
+      syncIncluded: "No sync-and-share layer included",
       limitations:
         "Quote-based enterprise packaging, stronger governance complexity, and an enterprise buying motion make it less accessible for straightforward endpoint backup deals.",
       howWeWin:
@@ -355,6 +385,11 @@ const researchedProfiles = [
       linuxSupport: "Not publicly positioned in this endpoint package",
       serverSupport: "Endpoint package focus; server support handled elsewhere in stack",
       bareMetalRecovery: "Not publicly positioned",
+      ransomwareImmutability: "Bundled suite messaging includes ransomware detection and security controls",
+      adminControls: "Strong if already inside Datto or Kaseya management tooling",
+      saasBackupCoverage: "Not positioned in this endpoint package",
+      restoreExperience: "Managed endpoint restore story, less consumer self-service oriented",
+      syncIncluded: "No sync-and-share layer included",
       limitations:
         "The value is strongest inside a broader Kaseya stack, and storage is shared rather than unlimited. It is less clean as a standalone backup story.",
       howWeWin:
@@ -408,8 +443,13 @@ const researchedProfiles = [
       linuxSupport: "Supported",
       serverSupport: "Supported",
       bareMetalRecovery: "Supported via image-based restore workflows",
+      ransomwareImmutability: "Security controls are available, but immutable-ransomware positioning is less central than in CrashPlan or Cove",
+      adminControls: "Strong admin control, deployment flexibility, and hosting choice",
+      saasBackupCoverage: "No major SaaS-app backup message in core endpoint positioning",
+      restoreExperience: "Strong file, image, and bare-metal style restore options",
+      syncIncluded: "No sync-and-share layer included",
       limitations:
-        "Requires more buyer decisions around hosting, storage destination, and policy setup. It is more admin-centric than turnkey for a standard seller-led endpoint backup pitch.",
+        "Requires more buyer decisions around hosting, storage destination, and policy setup. It is more admin-centric than turnkey for a standard endpoint backup pitch.",
       howWeWin:
         "Lead with faster time to value. Backblaze is easier to buy and adopt because the customer does not have to design storage architecture, hosting patterns, or backup infrastructure.",
       howWeLose:
@@ -461,10 +501,15 @@ const researchedProfiles = [
       linuxSupport: "Not publicly emphasized for endpoint tier",
       serverSupport: "Supported in broader Cove workload coverage",
       bareMetalRecovery: "Supported",
+      ransomwareImmutability: "Strong fortified immutable copy positioning",
+      adminControls: "Strong for MSP workflows, policy control, and managed deployment",
+      saasBackupCoverage: "Not the core public endpoint message here",
+      restoreExperience: "Strong recovery flexibility including virtual and bare-metal scenarios",
+      syncIncluded: "No sync-and-share layer included",
       limitations:
         "Public pricing is not transparent, and the product is aimed more at managed IT and MSP workflows than at simple self-serve endpoint backup.",
       howWeWin:
-        "Lead with clear commercial terms and a simpler backup motion. Backblaze is easier to position in direct seller conversations without MSP-style workflow complexity.",
+        "Lead with clear commercial terms and a simpler backup motion. Backblaze is easier to position in direct conversations without MSP-style workflow complexity.",
       howWeLose:
         "Cove is stronger when long retention, fortified copies, and MSP or managed-IT operational workflows are the priority.",
       features: [
@@ -515,6 +560,11 @@ const researchedProfiles = [
       linuxSupport: "Supported",
       serverSupport: "Supported",
       bareMetalRecovery: "Supported",
+      ransomwareImmutability: "Strong immutable cloud storage and DR resilience positioning",
+      adminControls: "Strong business continuity and managed recovery control set",
+      saasBackupCoverage: "Not a major public endpoint story",
+      restoreExperience: "Strong DR-heavy restore and virtualization-oriented recovery",
+      syncIncluded: "No sync-and-share layer included",
       limitations:
         "Business continuity emphasis and quote-based packaging can feel heavy for teams that mainly need reliable endpoint backup rather than DR orchestration.",
       howWeWin:
@@ -569,6 +619,11 @@ const researchedProfiles = [
       linuxSupport: "Supported",
       serverSupport: "Supported",
       bareMetalRecovery: "Supported with image-based backup options",
+      ransomwareImmutability: "Security positioning exists, but immutability is less central than control and flexibility",
+      adminControls: "Strong multi-tenant admin and policy control",
+      saasBackupCoverage: "Not the core public backup story here",
+      restoreExperience: "Centralized restore operations across managed endpoints",
+      syncIncluded: "No sync-and-share layer included",
       limitations:
         "Stronger for MSP operations than for direct end-user simplicity. Storage and policy flexibility also create more setup decisions for the buyer.",
       howWeWin:
@@ -596,7 +651,6 @@ const state = {
 };
 
 const elements = {
-  heroStats: document.querySelector("#heroStats"),
   competitorForm: document.querySelector("#competitorForm"),
   competitorId: document.querySelector("#competitorId"),
   nameInput: document.querySelector("#nameInput"),
@@ -621,6 +675,11 @@ const elements = {
   linuxSupportInput: document.querySelector("#linuxSupportInput"),
   serverSupportInput: document.querySelector("#serverSupportInput"),
   bareMetalInput: document.querySelector("#bareMetalInput"),
+  ransomwareInput: document.querySelector("#ransomwareInput"),
+  adminControlsInput: document.querySelector("#adminControlsInput"),
+  saasBackupInput: document.querySelector("#saasBackupInput"),
+  restoreExperienceInput: document.querySelector("#restoreExperienceInput"),
+  syncIncludedInput: document.querySelector("#syncIncludedInput"),
   limitationsInput: document.querySelector("#limitationsInput"),
   howWeWinInput: document.querySelector("#howWeWinInput"),
   howWeLoseInput: document.querySelector("#howWeLoseInput"),
@@ -707,6 +766,11 @@ function bindEvents() {
       linuxSupport: elements.linuxSupportInput.value.trim(),
       serverSupport: elements.serverSupportInput.value.trim(),
       bareMetalRecovery: elements.bareMetalInput.value.trim(),
+      ransomwareImmutability: elements.ransomwareInput.value.trim(),
+      adminControls: elements.adminControlsInput.value.trim(),
+      saasBackupCoverage: elements.saasBackupInput.value.trim(),
+      restoreExperience: elements.restoreExperienceInput.value.trim(),
+      syncIncluded: elements.syncIncludedInput.value.trim(),
       howWeWin: elements.howWeWinInput.value.trim(),
       limitations: elements.limitationsInput.value.trim(),
       howWeLose: elements.howWeLoseInput.value.trim(),
@@ -762,6 +826,11 @@ function normalizeCompetitorRecord(record) {
     linuxSupport: record.linuxSupport || "",
     serverSupport: record.serverSupport || "",
     bareMetalRecovery: record.bareMetalRecovery || "",
+    ransomwareImmutability: record.ransomwareImmutability || "",
+    adminControls: record.adminControls || "",
+    saasBackupCoverage: record.saasBackupCoverage || "",
+    restoreExperience: record.restoreExperience || "",
+    syncIncluded: record.syncIncluded || "",
     howWeWin: record.howWeWin || "",
     limitations: record.limitations || "",
     howWeLose: record.howWeLose || record.howWeWin || "",
@@ -809,37 +878,9 @@ function getProfileSources(companyName) {
 }
 
 function render() {
-  renderHeroStats();
   renderTable();
   renderCards();
   renderBattlecard();
-}
-
-function renderHeroStats() {
-  const selectedCount = getSelectedCompetitors().length;
-  const directCount = state.competitors.filter((item) => item.positioning === "Direct").length;
-  const pricedCompetitors = state.competitors.filter((item) => item.monthlyPrice > 0);
-  const averagePrice = pricedCompetitors.length
-    ? pricedCompetitors.reduce((sum, item) => sum + item.monthlyPrice, 0) / pricedCompetitors.length
-    : 0;
-
-  const stats = [
-    { label: "Tracked rivals", value: String(state.competitors.length) },
-    { label: "Battlecard picks", value: String(selectedCount) },
-    { label: "Direct competitors", value: String(directCount) },
-    { label: "Avg rival annual price", value: `$${averagePrice.toFixed(2)}` },
-  ];
-
-  elements.heroStats.innerHTML = stats
-    .map(
-      (stat) => `
-        <div class="stat-card">
-          <span class="eyebrow">${escapeHtml(stat.label)}</span>
-          <strong>${escapeHtml(stat.value)}</strong>
-        </div>
-      `,
-    )
-    .join("");
 }
 
 function renderTable() {
@@ -857,10 +898,6 @@ function renderTable() {
             />
           </td>
           <td>${escapeHtml(competitor.name)}</td>
-          <td>${escapeHtml(getPriceDisplay(competitor))}</td>
-          <td>${escapeHtml(competitor.storageModel)}</td>
-          <td>${escapeHtml(competitor.segment)}</td>
-          <td>${escapeHtml(competitor.features.slice(0, 2).join(" / "))}</td>
           <td>${escapeHtml(competitor.lastReviewed)}</td>
         </tr>
       `,
@@ -952,6 +989,11 @@ function renderBattlecardComparison(selected) {
     { label: "Linux support", key: "linuxSupport", type: "text" },
     { label: "Server support", key: "serverSupport", type: "text" },
     { label: "Bare metal recovery", key: "bareMetalRecovery", type: "text" },
+    { label: "Ransomware / immutability", key: "ransomwareImmutability", type: "text" },
+    { label: "Admin controls / deployment", key: "adminControls", type: "text" },
+    { label: "SaaS backup coverage", key: "saasBackupCoverage", type: "text" },
+    { label: "Restore experience", key: "restoreExperience", type: "text" },
+    { label: "Sync included", key: "syncIncluded", type: "text" },
     { label: "Limitations", key: "limitations", type: "text" },
     { label: "Other features", key: "features", type: "list" },
     { label: "Positioning notes", key: "notes", type: "text" },
@@ -1140,6 +1182,11 @@ function populateForm(competitor) {
   elements.linuxSupportInput.value = competitor.linuxSupport;
   elements.serverSupportInput.value = competitor.serverSupport;
   elements.bareMetalInput.value = competitor.bareMetalRecovery;
+  elements.ransomwareInput.value = competitor.ransomwareImmutability;
+  elements.adminControlsInput.value = competitor.adminControls;
+  elements.saasBackupInput.value = competitor.saasBackupCoverage;
+  elements.restoreExperienceInput.value = competitor.restoreExperience;
+  elements.syncIncludedInput.value = competitor.syncIncluded;
   elements.howWeWinInput.value = competitor.howWeWin;
   elements.limitationsInput.value = competitor.limitations;
   elements.howWeLoseInput.value = competitor.howWeLose;
@@ -1214,6 +1261,11 @@ function buildBattlecardText(selected) {
     { label: "Linux support", key: "linuxSupport", type: "text" },
     { label: "Server support", key: "serverSupport", type: "text" },
     { label: "Bare metal recovery", key: "bareMetalRecovery", type: "text" },
+    { label: "Ransomware / immutability", key: "ransomwareImmutability", type: "text" },
+    { label: "Admin controls / deployment", key: "adminControls", type: "text" },
+    { label: "SaaS backup coverage", key: "saasBackupCoverage", type: "text" },
+    { label: "Restore experience", key: "restoreExperience", type: "text" },
+    { label: "Sync included", key: "syncIncluded", type: "text" },
     { label: "Limitations", key: "limitations", type: "text" },
     { label: "Other features", key: "features", type: "list" },
     { label: "Positioning notes", key: "notes", type: "text" },

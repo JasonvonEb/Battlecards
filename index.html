@@ -16,14 +16,13 @@
     <div class="page-shell">
       <header class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Seller Battlecard Workspace</p>
-          <h1>Help sellers position Backblaze faster in live deals.</h1>
+          <p class="eyebrow">Battlecard Workspace</p>
+          <h1>Position Backblaze clearly when facing competitors.</h1>
           <p class="hero-text">
             Build side-by-side battlecards, sharpen competitor talk tracks, and keep the team aligned on where
             Backblaze wins, where competitors differ, and how to frame tradeoffs clearly.
           </p>
         </div>
-        <div class="hero-stats" id="heroStats"></div>
       </header>
 
       <main class="content-grid">
@@ -53,7 +52,7 @@
             </article>
             <article class="guide-card">
               <p class="eyebrow">Step 3</p>
-              <h3>Export the battlecard for the sales team</h3>
+              <h3>Export the battlecard for the team</h3>
               <p>
                 Export as text or PDF and drop it into the account brief, enablement doc, or Slack thread so the sales
                 team uses one clear positioning story.
@@ -65,7 +64,7 @@
         <section class="panel value-panel">
           <div class="panel-header">
             <div>
-              <h2>Why Sellers Use It</h2>
+              <h2>Why You Should Use It</h2>
               <p class="panel-text">The page is designed to make competitive positioning faster and more concrete.</p>
             </div>
           </div>
@@ -114,10 +113,6 @@
                 <tr>
                   <th>Compare</th>
                   <th>Company</th>
-                  <th>Annual price</th>
-                  <th>Storage</th>
-                  <th>Segment</th>
-                  <th>Other features</th>
                   <th>Reviewed</th>
                 </tr>
               </thead>
@@ -295,6 +290,33 @@
 
                 <div class="field-row">
                   <label class="field">
+                    <span>Ransomware / immutability</span>
+                    <input id="ransomwareInput" type="text" placeholder="Immutable copy, anti-ransomware, not positioned, etc." />
+                  </label>
+                  <label class="field">
+                    <span>Admin controls / deployment</span>
+                    <input id="adminControlsInput" type="text" placeholder="SSO, policy management, mass deployment, minimal admin controls, etc." />
+                  </label>
+                </div>
+
+                <div class="field-row">
+                  <label class="field">
+                    <span>SaaS backup coverage</span>
+                    <input id="saasBackupInput" type="text" placeholder="None, Microsoft 365, Google Workspace, enterprise SaaS, etc." />
+                  </label>
+                  <label class="field">
+                    <span>Restore experience</span>
+                    <input id="restoreExperienceInput" type="text" placeholder="Courier restore, self-service, image restore, DR workflow, etc." />
+                  </label>
+                </div>
+
+                <label class="field">
+                  <span>Sync included</span>
+                  <input id="syncIncludedInput" type="text" placeholder="No sync layer, includes sync and Cloud Drive, platform only, etc." />
+                </label>
+
+                <div class="field-row">
+                  <label class="field">
                     <span>How we win</span>
                     <textarea id="howWeWinInput" rows="4" placeholder="What Backblaze should emphasize against this competitor"></textarea>
                   </label>
@@ -307,7 +329,7 @@
                 <div class="field-row">
                   <label class="field">
                     <span>How we lose</span>
-                    <textarea id="howWeLoseInput" rows="4" placeholder="Where this competitor is stronger and what sellers should watch for"></textarea>
+                    <textarea id="howWeLoseInput" rows="4" placeholder="Where this competitor is stronger and what the team should watch for"></textarea>
                   </label>
                 </div>
 
